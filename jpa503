@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Input m: ");
+            int m = scanner.nextInt();
+
+            if (m == 999) {
+                System.out.println("程式終止");
+                break;
+            }
+
+            System.out.print("Input n: ");
+            int n = scanner.nextInt();
+
+            int gcd = calculateGCD(m, n);
+            System.out.println("最大公因數 = " + gcd);
+        }
+
+        scanner.close();
+    }
+
+   
+    public static int calculateGCD(int m, int n) {
+        if (n == 0) {
+            return m;
+        }
+        return calculateGCD(n, m % n);
+    }
+}
