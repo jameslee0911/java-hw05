@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Input the number: ");
+        int n = scanner.nextInt();
+
+        if (n < 1) {
+            System.out.println("輸入數字必須 >= 1。");
+        } else {
+            int result = sum2(n);
+            System.out.println("Ans: " + result);
+        }
+
+        scanner.close();
+    }
+
+   
+    public static int sum2(int n) {
+        if (n == 1) {
+            return 2;
+        } else {
+            return sum2(n - 1) + 2 * n; 
+        }
+    }
+}
