@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.print("Input n (0 <= n <= 16): ");
+            int n = scanner.nextInt();
+
+            if (n == 999) {
+                System.out.println("程式終止");
+                break;
+            }
+
+            if (n < 0 || n > 16) {
+                System.out.println("無效指令");
+                continue;
+            }
+
+            // 使用迴圈計算階乘
+            long factorialLoop = calculateFactorialLoop(n);
+            System.out.println(n + "的階乘（迴圈）= " + factorialLoop);
+
+            // 使用尾端遞迴計算階乘
+            long factorialTailRecursive = calculateFactorialTailRecursive(n, 1);
+            System.out.println(n + "的階乘（尾遞迴）= " + factorialTailRecursive);
+        }
+
+        scanner.close();
+    }
+
+    
+    public static long calculateFactorialLoop(int n) {
+        long factorial = 1;
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+        return factorial;
+    }
+
+   
+    public static long calculateFactorialTailRecursive(int n, long result) {
+        if (n == 0 || n == 1) {
+            return result;
+        }
+        return calculateFactorialTailRecursive(n - 1, result * n);
+    }
+}
